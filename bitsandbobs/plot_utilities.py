@@ -105,3 +105,24 @@ def plot_stars(xs, ys, n_stars=None, pvals=None, star_ths=None, ax=None, xytext=
                         fontweight=fontweight,
                         color=color,
                         horizontalalignment=horizontalalignment)
+
+
+def donut_plot(dist, ax=None, inner_radius=0.7, outer_radius=1, **kwargs):
+    """Make a donut plot from a pie chart.
+
+    Parameters
+    ----------
+    dist : array-like
+        List of counts
+    ax : matplotlib.axis, optional
+        Axis to use, by default None
+    inner_radius : float, optional
+        Inner radius of the donut, by default 0.7
+    outer_radius : int, optional
+        Outer radius of the donut, by default 1
+    """
+    if ax is None:
+        fig, ax = plt.subplots()
+    ax.pie(dist, radius=outer_radius, **kwargs)
+    circ = plt.Circle((0, 0), inner_radius, color='white')
+    ax.add_artist(circ)
