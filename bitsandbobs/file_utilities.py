@@ -1,5 +1,7 @@
 import os
 import re
+import pandas as pd
+from IPython.display import display
 
 
 def _expand_path(pth):
@@ -25,3 +27,8 @@ def assert_dir(new_dir):
     if not os.path.exists(new_dir):
         os.mkdir(new_dir)
     return _expand_path(new_dir)
+
+
+def show_dataframe(df):
+    with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+        display(df)

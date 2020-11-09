@@ -38,7 +38,7 @@ def format_axis_labels(ax, axis_info, despine=True, trim=False):
     if 'xmax' in axis_info:
         ax.set_xlim(axis_info.get('xstart', -0.5), axis_info['xmax'])
     if 'ymax' in axis_info:
-        ax.set_ylim(axi_info.get('ystart', -0.5), axis_info['ymax'])
+        ax.set_ylim(axis_info.get('ystart', -0.5), axis_info['ymax'])
     if despine:
         sns.despine(offset=5, trim=trim, ax=ax)
 

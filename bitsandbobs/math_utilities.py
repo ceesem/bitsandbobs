@@ -31,3 +31,24 @@ def isbetween(d, start, end, start_inclusive=True, end_inclusive=False):
     else:
         l2 = d < end
     return np.flatnonzero(np.logical_and(l1, l2))
+
+
+def within_bbox(xyz, bbox):
+    """Returns true when xyz in a bounding box
+
+    Parameters
+    ----------
+    xyz : array
+        Nx3 numpy array of points
+    bbox : array
+        2x3 array of upper, lower bounds of bounding box
+
+    Returns
+    -------
+    within_bbox : array
+        N-length boolean array, True for points inside bbox
+    """
+    within_x = np.logical_and(xyz[:, 0] > bbox[0, 0], xyz[:, 0] <= bbox[1, 0])
+    within_y = np.logical_and(xyz[:, 1] > bbox[0, 1], xyz[:, 1] <= bbox[1, 1])
+    within_z = np.logical_and(xyz[:, 2] > bbox[0, 2], xyz[:, 2] <= bbox[1, 2])
+    return within_x & within_y & within_z
